@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 48" width="64" height="96" shape-rendering="crispEdges">
+  <!-- Hair & Head slightly tilted/drooped -->
+  <rect x="10" y="6" width="12" height="4" fill="#3e2723" />
+  <rect x="8" y="8" width="16" height="4" fill="#3e2723" />
+  <rect x="10" y="12" width="12" height="6" fill="#f8d7da" />
+  <!-- Glasses tilted down -->
+  <rect x="10" y="13" width="5" height="3" fill="#18181b" />
+  <rect x="17" y="13" width="5" height="3" fill="#18181b" />
+  <rect x="15" y="14" width="2" height="1" fill="#18181b" />
+  <!-- Sad mouth / small tear drop -->
+  <rect x="13" y="17" width="6" height="1" fill="#3e2723" />
+  <rect x="9" y="14" width="1" height="2" fill="#38bdf8" />
+  <!-- Shirt -->
+  <rect x="8" y="20" width="16" height="13" fill="#3b82f6" />
+  <!-- Pleading / Clasping hands together in front -->
+  <rect x="13" y="24" width="6" height="4" fill="#f8d7da" stroke="#f472b6" stroke-width="0.5"/>
+  <!-- Pants -->
+  <rect x="10" y="33" width="5" height="9" fill="#374151" />
+  <rect x="17" y="33" width="5" height="9" fill="#374151" />
+  <rect x="9" y="42" width="6" height="3" fill="#78350f" />
+  <rect x="17" y="42" width="6" height="3" fill="#78350f" />
+</svg>

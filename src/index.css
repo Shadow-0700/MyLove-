@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Fredoka', system-ui, sans-serif;
+  }
+}
+
+/* Custom font utilities */
+.font-pixel {
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-pixel-heading {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+/* Pixel rendering */
+.pixelated {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* CRT monitor / Storybook frame scanlines & vignette */
+.crt-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 4px 100%;
+  pointer-events: none;
+}
+
+/* Dreamy floating particle animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(105vh) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.1) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-particle {
+  animation: floatUp 12s linear infinite;
+}
+
+/* Gentle bounce for RPG indicator */
+@keyframes cuteBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-cute-bounce {
+  animation: cuteBounce 1.5s ease-in-out infinite;
+}
+
+/* Pixel character walking bobbing */
+@keyframes walkBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-walk-bob {
+  animation: walkBob 0.32s steps(2, jump-none) infinite;
+}
+
+/* Pixel character idle bobbing */
+@keyframes pixelBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-pixel-bob {
+  animation: pixelBob 0.8s steps(2, jump-none) infinite;
+}
+
+/* Pixel character dance animation */
+@keyframes pixelDance {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+  50% {
+    transform: translateY(0) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(-4deg);
+  }
+}
+
+.animate-pixel-dance {
+  animation: pixelDance 0.6s ease-in-out infinite;
+}
+
+/* Golden glowing aura */
+.glow-gold {
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.45), 0 0 50px rgba(236, 72, 153, 0.25);
+}
+
+.glow-diwali-title {
+  text-shadow: 
+    0 0 10px rgba(251, 191, 36, 0.9),
+    0 0 20px rgba(245, 158, 11, 0.8),
+    0 0 40px rgba(239, 68, 68, 0.6),
+    0 0 70px rgba(234, 88, 12, 0.5);
+}
+
+/* Diya flame flickering */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8));
+  }
+  25% {
+    transform: scale(1.05, 0.95) translateY(-1px) rotate(-1deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.9));
+  }
+  50% {
+    transform: scale(0.95, 1.05) translateY(-2px) rotate(1.5deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 9px rgba(239, 68, 68, 0.7));
+  }
+  75% {
+    transform: scale(1.02, 0.98) translateY(-0.5px) rotate(-0.5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 11px rgba(245, 158, 11, 0.85));
+  }
+}
+
+.animate-flame-flicker {
+  animation: flameFlicker 1.4s ease-in-out infinite;
+}
+
+.glow-heart {
+  filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.6));
+}
+
+/* Custom scrollbars inside letter */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(254, 243, 199, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(217, 119, 6, 0.5);
+  border-radius: 9999px;
+}

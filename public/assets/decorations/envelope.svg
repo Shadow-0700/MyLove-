@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+  <defs>
+    <!-- Paper texture & noise filter -->
+    <filter id="paperTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.04 0" in="noise" result="coloredNoise" />
+      <feComposite operator="in" in="coloredNoise" in2="SourceGraphic" result="composite" />
+      <feBlend mode="multiply" in="SourceGraphic" in2="composite" />
+    </filter>
+
+    <!-- Deep tactile envelope shadow -->
+    <filter id="envelopeShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#451a03" flood-opacity="0.32" />
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#78350f" flood-opacity="0.22" />
+    </filter>
+
+    <!-- Flap cast shadow -->
+    <filter id="flapShadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#78350f" flood-opacity="0.38" />
+    </filter>
+
+    <!-- Wax seal shadow -->
+    <filter id="sealShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#4c0519" flood-opacity="0.45" />
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+
+    <!-- Gradients for realistic paper folds and lighting -->
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffef9" />
+      <stop offset="50%" stop-color="#fdf6e7" />
+      <stop offset="100%" stop-color="#f5e6c8" />
+    </linearGradient>
+
+    <linearGradient id="bottomFlapGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#f3e0bc" />
+      <stop offset="70%" stop-color="#fbf2de" />
+      <stop offset="100%" stop-color="#fffef9" />
+    </linearGradient>
+
+    <linearGradient id="leftFlapGrad" x1="0" y1="0" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#edd8b2" />
+      <stop offset="100%" stop-color="#faeed7" />
+    </linearGradient>
+
+    <linearGradient id="rightFlapGrad" x1="1" y1="0" x2="0" y2="0.5">
+      <stop offset="0%" stop-color="#ecd6b0" />
+      <stop offset="100%" stop-color="#faeed7" />
+    </linearGradient>
+
+    <linearGradient id="topFlapGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffdfa" />
+      <stop offset="70%" stop-color="#faeed5" />
+      <stop offset="100%" stop-color="#eed6aa" />
+    </linearGradient>
+
+    <!-- Refined Gold Trim Gradients -->
+    <linearGradient id="goldBorder" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="30%" stop-color="#fef08a" />
+      <stop offset="70%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <linearGradient id="goldLineLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- Rich Wax Seal Gradients -->
+    <radialGradient id="sealGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="40%" stop-color="#e11d48" />
+      <stop offset="80%" stop-color="#be123c" />
+      <stop offset="100%" stop-color="#881337" />
+    </radialGradient>
+
+    <radialGradient id="sealRimGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fda4af" />
+      <stop offset="60%" stop-color="#be123c" />
+      <stop offset="100%" stop-color="#4c0519" />
+    </radialGradient>
+  </defs>
+
+  <g id="envelope-container">
+    <!-- Envelope Base Card / Shadow -->
+    <rect x="20" y="36" width="280" height="176" rx="14" fill="url(#bodyGrad)" filter="url(#envelopeShadow)" />
+
+    <!-- Clip path to keep flaps inside rounded rect -->
+    <clipPath id="envelopeClip">
+      <rect x="20" y="36" width="280" height="176" rx="14" />
+    </clipPath>
+
+    <g clip-path="url(#envelopeClip)">
+      <!-- Background back wall of opened envelope interior -->
+      <rect x="20" y="36" width="280" height="176" fill="url(#bodyGrad)" />
+
+      <!-- Left Flap Fold -->
+      <path d="M 20 36 L 126 124 L 20 212 Z" fill="url(#leftFlapGrad)" />
+
+      <!-- Right Flap Fold -->
+      <path d="M 300 36 L 194 124 L 300 212 Z" fill="url(#rightFlapGrad)" />
+
+      <!-- Bottom Flap Fold with bevel shading -->
+      <path d="M 20 212 L 160 114 L 300 212 Z" fill="url(#bottomFlapGrad)" />
+
+      <!-- Bottom Fold Crease highlights and shadows -->
+      <path d="M 20 212 L 160 114" stroke="#451a03" stroke-opacity="0.15" stroke-width="2" />
+      <path d="M 22 213 L 160 116" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1.5" />
+      <path d="M 300 212 L 160 114" stroke="#451a03" stroke-opacity="0.15" stroke-width="2" />
+      <path d="M 298 213 L 160 116" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1.5" />
+
+      <!-- Inner gold accent along bottom crease -->
+      <path d="M 25 210 L 160 117 L 295 210" fill="none" stroke="url(#goldLineLight)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 3" />
+
+      <!-- Side flap crease shadows -->
+      <path d="M 20 36 L 126 124" stroke="#451a03" stroke-opacity="0.12" stroke-width="2" />
+      <path d="M 300 36 L 194 124" stroke="#451a03" stroke-opacity="0.12" stroke-width="2" />
+
+      <!-- Top Flap (Triangular flap folded down over front) -->
+      <!-- Shadow cast by top flap onto lower body -->
+      <path d="M 18 36 L 160 148 L 302 36 Z" fill="#381a08" filter="url(#flapShadow)" />
+
+      <!-- Top Flap Surface -->
+      <path d="M 20 36 L 160 144 L 300 36 Z" fill="url(#topFlapGrad)" />
+
+      <!-- Top Flap Crease Highlights (light catching the top folded edge) -->
+      <line x1="22" y1="37" x2="298" y2="37" stroke="#ffffff" stroke-width="2" stroke-opacity="0.7" />
+      <line x1="22" y1="39" x2="298" y2="39" stroke="#edd5af" stroke-width="1" stroke-opacity="0.5" />
+
+      <!-- Top Flap Diagonal Edges (Bevel highlight and shadow) -->
+      <path d="M 20 36 L 160 144 L 300 36" fill="none" stroke="#451a03" stroke-opacity="0.2" stroke-width="3" stroke-linecap="round" />
+      <path d="M 22 36 L 160 142 L 298 36" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" />
+
+      <!-- Refined Golden Piping along the top flap -->
+      <path d="M 26 40 L 160 138 L 294 40" fill="none" stroke="url(#goldBorder)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 32 44 L 160 132 L 288 44" fill="none" stroke="#d97706" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.7" />
+
+      <!-- Outer perimeter golden border -->
+      <rect x="22" y="38" width="276" height="172" rx="12" fill="none" stroke="url(#goldBorder)" stroke-width="4" />
+      <rect x="26" y="42" width="268" height="164" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5" />
+
+      <!-- Subtle retro pixel-art corner accents -->
+      <circle cx="34" cy="50" r="2.5" fill="#d97706" />
+      <circle cx="286" cy="50" r="2.5" fill="#d97706" />
+      <circle cx="34" cy="198" r="2.5" fill="#d97706" />
+      <circle cx="286" cy="198" r="2.5" fill="#d97706" />
+    </g>
+
+    <!-- WAX SEAL IN CENTER (Overlapping the point of the top flap) -->
+    <g id="wax-seal" transform="translate(160, 140)" filter="url(#sealShadow)">
+      <!-- Outer Molten Wax Overflow Ring -->
+      <circle cx="0" cy="0" r="28" fill="url(#sealRimGrad)" />
+
+      <!-- Organic melted edge nubs (pixel-art retro charm) -->
+      <circle cx="-25" cy="-8" r="7" fill="#9f1239" />
+      <circle cx="24" cy="-10" r="6.5" fill="#9f1239" />
+      <circle cx="-18" cy="20" r="8" fill="#881337" />
+      <circle cx="17" cy="20" r="7.5" fill="#881337" />
+      <circle cx="0" cy="27" r="7" fill="#700c2a" />
+      <circle cx="-2" cy="-26" r="6" fill="#be123c" />
+
+      <!-- Middle Wax Ridge -->
+      <circle cx="0" cy="0" r="24" fill="url(#sealGrad)" />
+
+      <!-- Inner Recessed Impression Dish -->
+      <circle cx="0" cy="1" r="19" fill="#9f1239" stroke="#4c0519" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="18" fill="url(#sealGrad)" />
+
+      <!-- Specular gloss highlight on wax top rim -->
+      <path d="M -15 -14 A 20 20 0 0 1 15 -14" fill="none" stroke="#fda4af" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.7" />
+
+      <!-- Embossed Pure White Heart with Specular Highlight and Depth -->
+      <!-- Shadow of embossed heart -->
+      <path d="M 0 13 C -8 5 -15 -1 -15 -7 C -15 -12 -11 -15 -6 -15 C -2.5 -15 0 -12 0 -10 C 0 -12 2.5 -15 6 -15 C 11 -15 15 -12 15 -7 C 15 -1 8 5 0 13 Z" fill="#4c0519" transform="translate(0, 1.5)" />
+
+      <!-- White Heart Body -->
+      <path d="M 0 12 C -8 4 -15 -2 -15 -8 C -15 -13 -11 -16 -6 -16 C -2.5 -16 0 -13 0 -11 C 0 -13 2.5 -16 6 -16 C 11 -16 15 -13 15 -8 C 15 -2 8 4 0 12 Z" fill="#ffffff" />
+
+      <!-- Subtle heart inner gradient / depth -->
+      <path d="M 0 11 C -7 3 -13 -2 -13 -7 C -13 -11 -10 -14 -6 -14 C -2.5 -14 0 -11 0 -9 C 0 -11 2.5 -14 6 -14 C 10 -14 13 -11 13 -7 C 13 -2 7 3 0 11 Z" fill="#fff1f2" />
+
+      <!-- Sparkle/gleam on heart lobe -->
+      <circle cx="-5" cy="-11" r="2" fill="#ffffff" />
+      <circle cx="-2" cy="-8" r="1" fill="#ffffff" />
+    </g>
+  </g>
+</svg>
